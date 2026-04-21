@@ -1,0 +1,6 @@
+newmtl Material_1
+map_Kd textures/c1c57ee7a26ade94440d4b5c90780a75.jpg
+Pr 1.00
+newmtl Material_2
+map_Kd textures/3041c0e7677b403e976941c70400cc8b.jpg
+Pr 1.00
