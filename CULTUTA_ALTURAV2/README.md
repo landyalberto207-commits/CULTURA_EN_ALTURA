@@ -1,102 +1,142 @@
-# Modo - Elegant Exhibition Template
+# 🏛️ Cultura en Altura - Aplicación Web
 
-A premium, animation-rich single-page website template with a museum/gallery aesthetic. Features smooth scrolling, GSAP-powered animations, custom cursor, scroll-triggered reveals, parallax effects, and stacking card layouts.
+Plataforma interactiva para explorar el patrimonio cultural de Tulancingo, Hidalgo mediante recorridos virtuales 3D, realidad aumentada y comunidad.
 
-## Features
+## 🚀 Inicio Rápido
 
-- **Hero Section**: Split-text layout with center image, parallax scroll effects, navigation bar, and social links
-- **About Section**: Text reveal animations, 3-column parallax image gallery, statistics counter
-- **Exhibitions Section**: 2x2 grid with staggered scroll reveal, image hover effects, gradient overlays
-- **Collections Section**: Full-screen stacking cards with pin-and-overlay scroll effect, alternating layouts
-- **Testimonials Section**: Centered quote with author info, staggered reveal animation
-- **Visit Section**: Info cards grid with icon support (MapPin, Clock, Calendar, Ticket), CTA button
-- **Footer**: Infinite marquee text, social icon links, quick links, contact info, bottom navigation
-
-## Tech Stack
-
-- React 19 + TypeScript
-- Vite
-- Tailwind CSS 3
-- GSAP (ScrollTrigger)
-- Lenis (smooth scroll)
-- Lucide React (icons)
-- Radix UI primitives
-- shadcn/ui components
-
-## Quick Start
+### Instalación
 
 ```bash
 npm install
+```
+
+### Desarrollo
+
+```bash
 npm run dev
 ```
 
-## Configuration
+La aplicación estará disponible en `http://localhost:5173`
 
-All content is managed through `src/config.ts`. Edit the exported config objects to customize:
+### Producción
 
-### siteConfig
-- `language` - HTML lang attribute (e.g., "en", "zh", "ja")
-- `title` - Page title
-- `description` - Meta description
+```bash
+npm run build
+npm run preview
+```
 
-### heroConfig
-- `brandLeft` / `brandRight` - Split headline text (left and right of center image)
-- `tagline` - Subtitle text below left headline
-- `badge` - Small label above center image
-- `since` - Year or date text below right headline
-- `email` - Contact email
-- `heroImage` / `heroImageAlt` - Center image path and alt text
-- `scrollText` / `copyrightText` - Bottom bar text
-- `navLinks` - Array of `{ label, href }` for navigation
-- `socialLinks` - Array of `{ label, href }` for social links
+## 📱 Desarrollo Móvil
 
-### aboutConfig
-- `label` - Section label (e.g., "Established 1892")
-- `headline` - Main heading (supports HTML line breaks)
-- `description` - Body text
-- `bottomText` - Closing paragraph text
-- `galleryImages` - Array of `{ src, alt, label }` (distributed across 3 columns)
-- `stats` - Array of `{ value, label }` for statistics
+### Android
 
-### exhibitionsConfig
-- `label` - Section label
-- `headline` - Main heading
-- `ctaText` - Call-to-action button text
-- `exhibitions` - Array of `{ id, title, image, date }`
+```bash
+npm run mobile:build      # Compilar y sincronizar
+npm run mobile:android    # Abrir Android Studio
+```
 
-### collectionsConfig
-- `label` - Section label
-- `headline` - Main heading
-- `ctaText` - Per-card button text
-- `collections` - Array of `{ id, title, year, description, image }`
+### iOS
 
-### testimonialsConfig
-- `quote` - Quote text (without quotation marks)
-- `authorName` - Author name
-- `authorTitle` - Author title/position
-- `authorImage` - Author portrait image path
+```bash
+npm run mobile:build      # Compilar y sincronizar  
+npm run mobile:ios        # Abrir Xcode
+```
 
-### visitConfig
-- `label` - Section label
-- `headline` - Main heading (supports HTML for line breaks)
-- `description` - Body text
-- `ctaText` - CTA button text
-- `infoCards` - Array of `{ icon, title, content }` where icon is one of: MapPin, Clock, Calendar, Ticket. Content supports HTML.
+## 🧪 Testing
 
-### footerConfig
-- `marqueeText` - Scrolling marquee text
-- `brandName` - Brand name in footer
-- `brandDescription` - Short brand description
-- `socialLinks` - Array of `{ label, href }` where label maps to icon: Instagram, Twitter, Facebook, Linkedin, Youtube, Globe
-- `quickLinks` - Array of `{ label, href }`
-- `quickLinksTitle` - Column title for quick links
-- `contactTitle` - Column title for contact info
-- `contactItems` - Array of strings (supports HTML for line breaks)
-- `bottomLinks` - Array of `{ label, href }` for footer bottom bar
+```bash
+npm run test              # Ejecutar todos los tests
+npm run test:watch        # Modo watch
+npm run test:unit         # Tests unitarios
+npm run test:integration  # Tests de integración
+npm run test:coverage     # Con reporte de cobertura
 
-## Required Images
+# Tests E2E con Playwright
+npm run test:e2e          # Headless
+npm run test:e2e:ui       # Con interfaz gráfica
+npm run test:e2e:headed   # Con navegador visible
+```
 
-Place images in `public/images/`:
+## ⚙️ Configuración
+
+### Variables de Entorno
+
+Crea un archivo `.env.local` con:
+
+```env
+VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
+VITE_SUPABASE_ANON_KEY=tu-anon-key
+VITE_SUPABASE_SERVICE_ROLE_KEY=tu-service-role-key
+VITE_CLOUDINARY_CLOUD_NAME=tu-cloud-name
+VITE_CLOUDINARY_UPLOAD_PRESET=tu-upload-preset
+```
+
+### Configuración del Sitio
+
+Edita `src/config.ts` para personalizar:
+- Textos de la página
+- Imágenes y recursos
+- Enlaces de navegación
+- Configuración de exhibiciones
+
+## 🏗️ Stack Tecnológico
+
+- **React 19** + TypeScript
+- **Vite** - Build tool
+- **Tailwind CSS** - Estilos
+- **GSAP** + Lenis - Animaciones
+- **Three.js** - Gráficos 3D
+- **Supabase** - Backend
+- **Cloudinary** - Gestión de medios
+- **Capacitor** - Mobile apps
+
+## 📦 Scripts Disponibles
+
+| Script | Descripción |
+|--------|-------------|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build producción |
+| `npm run preview` | Preview del build |
+| `npm run lint` | Ejecutar ESLint |
+| `npm run test` | Tests unitarios |
+| `npm run test:e2e` | Tests end-to-end |
+| `npm run mobile:build` | Build para móvil |
+| `npm run mobile:sync` | Sincronizar Capacitor |
+
+## 📁 Estructura
+
+```
+src/
+├── components/      # Componentes reutilizables
+├── pages/          # Páginas principales
+├── sections/       # Secciones de landing
+├── lib/            # Servicios y utilidades
+├── hooks/          # Custom hooks
+├── data/           # Datos y configuración
+└── __tests__/      # Tests
+```
+
+## 🎯 Características Principales
+
+- ✅ Recorridos virtuales 3D interactivos
+- ✅ Visor AR para dispositivos móviles
+- ✅ Portal de comunidad con videos
+- ✅ Sistema de autenticación Supabase
+- ✅ Panel de administración
+- ✅ Mapa mundial interactivo 3D
+- ✅ Perfiles de usuario personalizables
+- ✅ Animaciones GSAP y scroll suave
+
+## 📖 Documentación Adicional
+
+Ver el [README principal](../README.md) para:
+- Guía completa de instalación
+- Configuración de base de datos
+- Documentación de API
+- Deployment
+
+---
+
+**Hecho con ❤️ en Tulancingo, Hidalgo**
 
 - `hero-statue.png` - Hero center image (transparent PNG recommended)
 - `about-*.jpg/png` - About gallery images (6 recommended, 3/4 or 4/5 aspect ratio)
