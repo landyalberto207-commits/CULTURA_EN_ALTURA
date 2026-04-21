@@ -1,0 +1,444 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    cursor: none !important;
+  }
+
+  @media (pointer: coarse) {
+    * {
+      cursor: auto !important;
+    }
+
+    #custom-cursor {
+      display: none !important;
+    }
+  }
+
+  :root {
+    /* Colores auténticos de Tulancingo/Hidalgo */
+    --cantera: #A0522D;
+    --cantera-dark: #8B4513;
+    --tierra: #CD853F;
+    --verde-hidalgo: #556B2F;
+    --cielo-hidalgo: #4682B4;
+    --ocre: #DAA520;
+    --cream: #F5F5DC;
+    --piedra: #708090;
+    
+    --background: 25 40% 45%;
+    --foreground: 0 0% 100%;
+    --primary: 25 60% 45%;
+    --muted: 25 20% 50%;
+    --radius: 0rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+  
+  body {
+    @apply text-white antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(180deg, #8B7355 0%, #A0826D 100%);
+    background-attachment: fixed;
+  }
+  
+  ::selection {
+    background: rgba(160, 82, 45, 0.4);
+    color: inherit;
+  }
+}
+
+@layer components {
+  .museo-headline {
+    @apply font-semibold tracking-tight leading-none;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .museo-body {
+    @apply font-light leading-relaxed;
+    line-height: 1.7;
+  }
+  
+  .museo-label {
+    @apply text-xs uppercase tracking-widest font-medium;
+    letter-spacing: 0.15em;
+  }
+  
+  .border-museo {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+@layer utilities {
+  .text-shadow-museo {
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .gpu-accelerate {
+    transform: translateZ(0);
+  }
+}
+
+/* Colores de Tulancingo */
+.bg-cantera {
+  background-color: #A0522D;
+}
+
+.bg-tierra {
+  background-color: #CD853F;
+}
+
+.bg-verde-hidalgo {
+  background-color: #556B2F;
+}
+
+.bg-cielo-hidalgo {
+  background-color: #4682B4;
+}
+
+.text-cantera {
+  color: #A0522D;
+}
+
+.text-tierra {
+  color: #CD853F;
+}
+
+.border-cantera {
+  border-color: #A0522D;
+}
+
+/* Marquee animation */
+@keyframes marqueeTrack {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.marquee-row {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  min-width: max-content;
+  align-items: center;
+  gap: 5rem;
+  padding-right: 5rem;
+  animation: marqueeTrack 50s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee {
+  animation: marqueeTrack 50s linear infinite;
+}
+
+/* Hide default scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(160, 82, 45, 0.5);
+  border-radius: 3px;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Image hover effect */
+.img-hover-zoom {
+  overflow: hidden;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.5s ease;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Float animation for hero text */
+@keyframes heroReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-20deg) scale(0.9);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.text-3d-effect {
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-shadow: 
+    1px 1px 0px #d4c1b1,
+    2px 2px 0px #c3ab98,
+    3px 3px 0px #b2967e,
+    4px 4px 0px #a08266,
+    5px 5px 0px #8f725a,
+    6px 6px 0px #7d634d,
+    7px 7px 10px rgba(0, 0, 0, 0.4),
+    7px 7px 20px rgba(0, 0, 0, 0.2);
+  animation: heroReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.text-3d-effect:hover {
+  transform: translateY(-5px) scale(1.02);
+  color: #fffaf5;
+  text-shadow: 
+    1px 1px 0px #d4c1b1,
+    2px 2px 0px #c3ab98,
+    3px 3px 0px #b2967e,
+    4px 4px 0px #a08266,
+    5px 5px 0px #8f725a,
+    6px 6px 0px #7d634d,
+    8px 8px 0px #6b5341,
+    10px 10px 0px #5a4535,
+    12px 12px 15px rgba(0, 0, 0, 0.5),
+    12px 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.delay-200 { animation-delay: 200ms; opacity: 0; }
+.delay-400 { animation-delay: 400ms; opacity: 0; }
+
+@keyframes waveAnim {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-wave {
+  animation: waveAnim 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes loginCtaFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes liquidShine {
+  0% { left: -100%; transition: none; }
+  100% { left: 200%; }
+}
+
+.login-nav-cta {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.login-nav-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: none;
+}
+
+.login-nav-cta:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.login-nav-cta:hover::before {
+  animation: liquidShine 1.5s ease-in-out infinite;
+}
+
+.login-nav-cta:active {
+  transform: translateY(1px) scale(0.96);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@keyframes submitBtnGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 193, 177, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(212, 193, 177, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 193, 177, 0);
+  }
+}
+
+.login-nav-cta::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -50%;
+  width: 180%;
+  height: 120%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%) skewX(-20deg);
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.login-nav-cta:hover::before {
+  animation: silverSweep 0.9s ease-in-out forwards;
+  opacity: 1;
+}
+
+.login-nav-cta:hover {
+  border-color: rgba(203, 213, 225, 0.65);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.6), 0 12px 24px rgba(148, 163, 184, 0.25);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(148, 163, 184, 0.14));
+}
+
+.login-nav-cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.login-submit-btn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px; /* Boton Apple ovalado */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 1;
+}
+
+.login-submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  z-index: -1;
+  transition: all 0.7s ease;
+}
+
+.login-submit-btn:hover::before {
+  animation: shine 1.5s infinite;
+  left: 125%;
+}
+
+.login-submit-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px -10px rgba(212, 193, 177, 0.6);
+  color: #000;
+  background-color: #fff;
+  animation: submitBtnGlow 2s infinite;
+}
+
+.login-submit-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  20% { left: 125%; }
+  100% { left: 125%; }
+}
+
